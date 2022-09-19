@@ -7,10 +7,10 @@ class Conexao
 
   def self.connect
     @db = Mysql2::Client.new(
-      :host     => "10.77.72.191",
-      :username => "user_dev",
-      :password => "ACnG9reZ5pPcslmLbJCF215454",
-      :database => "ibcsystem_development")
+      :host     => ENV["HOST"],
+      :username => ENV["USERNAME"],
+      :password => ENV["PASSWORD"],
+      :database => ENV["DATABASE"])
   end
 
   puts "Feito a conexao com o banco com sucesso!"
