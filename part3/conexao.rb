@@ -1,12 +1,14 @@
 require 'mysql2'
 
 class Conexao
+  @@connection  = nil
+
   class << self
     attr_accessor :db
   end
 
   def self.connect
-    @db = Mysql2::Client.new(
+    @@connection = Mysql2::Client.new(
       :host     => ENV["HOST"],
       :username => ENV["USERNAME"],
       :password => ENV["PASSWORD"],
@@ -14,8 +16,4 @@ class Conexao
   end
 
   puts "Feito a conexao com o banco com sucesso!"
-
-  def self.search_client(id)
-    @db.query("SELECT * FROM clientes WHERE id = #{id}").first
-  end
 end
